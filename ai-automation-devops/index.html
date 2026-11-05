@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="dark">
+<title>Personal AI × Automation × DevOps Roadmap — Aug 2026 → Jul 2027</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="topbar"><div class="topinner">
+  <div class="brand"><span class="brandmark"></span><span>Personal AI × Automation × DevOps Roadmap</span></div>
+  <div class="spacer"></div>
+  <span class="pill">Aug 2026 → Jul 2027</span>
+  <input class="search" id="search" placeholder="Filter roadmap…">
+  <button class="btn" id="resetProgress">Reset progress</button>
+</div></div>
+
+<main class="shell">
+<section class="hero">
+  <div class="card hero-main">
+    <div class="eyebrow">1-year personal roadmap • practical leverage • 4–6 hours/month</div>
+    <h1>Build leverage, not an AI hobby.</h1>
+    <p class="lede">A compounding path from agent-ready repositories → evals → safe tools → durable automation → personal data/content systems → local AI serving → observability → coding-agent orchestration → trusted search → rebuildable infrastructure → one measured personal-ops platform.</p>
+    <div class="statgrid">
+      <div class="stat"><b>12</b><small>monthly sprints</small></div>
+      <div class="stat"><b>~55h</b><small>core year budget</small></div>
+      <div class="stat"><b>1</b><small>compounding Git repo</small></div>
+      <div class="stat"><b>0</b><small>required new subscriptions</small></div>
+    </div>
+  </div>
+  <div class="card north">
+    <div class="eyebrow">North star</div>
+    <h2>Every experiment must leave behind an asset.</h2>
+    <ul>
+      <li>Git history, tests and evals</li><li>Containers / IaC / runbooks</li>
+      <li>Portable tools and skills</li><li>Backup + restore path</li>
+      <li>Observable, bounded agent behavior</li>
+    </ul>
+    <div class="rule">Default rule: if the same result can reasonably be automated, do not make a GUI-only procedure your canonical workflow.</div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-head"><div><div class="eyebrow">Current signal review</div><h2>What changed recently that is actually worth your time</h2></div>
+  <p class="desc">Selective review of material changes from 5 Oct–5 Nov 2026, refreshed 5 Nov 2026. This is deliberately not an AI-news roundup: every item below changes an engineering decision in the roadmap.</p></div>
+  <div class="signalgrid" id="signals"></div><div class="freshness" style="margin-top:14px"><b>5 Nov delta:</b> GitHub Agentic Workflows GA now warrants one small CI triage exercise; Fusion/local routing merits a measured bake-off, not a new platform; cloud sandbox compute needs cost caps; feedback-driven automations need eval gates. Preserved October lessons: sandbox negative tests, protected test oracles, read-only exploration, incident investigation, and GX10/3090 independent routing. No additional subscriptions or hardware recommended.</div>
+</section>
+
+<section class="section principles">
+  <div class="card">
+    <div class="eyebrow">Operating model</div><h2>Your default engineering rules</h2>
+    <div class="rules">
+      <div class="rulecard"><b>Cloud vs local</b><span>Use Claude Code / Codex / Copilot for interactive coding leverage. Use local models for private, repeatable service workloads only after they pass your eval threshold.</span></div>
+      <div class="rulecard"><b>Agent vs code</b><span>Deterministic code owns validation, permissions, side effects and known transformations. Models own ambiguity, classification, synthesis and planning.</span></div>
+      <div class="rulecard"><b>Compose vs Kubernetes</b><span>Compose first for single-host stateful services. K3s/Flux only after you can state the operational problem it solves.</span></div>
+      <div class="rulecard"><b>Autonomy</b><span>Read/search/triage can be highly automated. Writes use intent → validation → approval where consequential → deterministic execution.</span></div>
+      <div class="rulecard"><b>Dependencies</b><span>Pin runtime/tool versions and model revisions. Changes flow through smoke tests + evals + rollback evidence.</span></div>
+      <div class="rulecard"><b>Secrets</b><span>SOPS/age or equivalent encrypted configuration; keys stay out of Git. Agents receive capability-scoped credentials, not your whole vault.</span></div>
+      <div class="rulecard"><b>Observability</b><span>OpenTelemetry first. Trace model/tool steps; default to metadata rather than storing sensitive prompt/document content.</span></div>
+      <div class="rulecard"><b>Definition of done</b><span>Rebuildable, tested, observable, backed up if stateful, documented teardown/restore, and measurably useful.</span></div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="eyebrow">Compounding repository</div><h2>One place for the whole year</h2>
+    <pre class="tree" id="tree"></pre>
+    <p class="small">The exact names can change. The important constraint is that prompts, tools, evals, infrastructure and runbooks are versioned together instead of living in chat history.</p>
+  </div>
+</section>
+
+<section class="section" id="roadmap">
+  <div class="section-head"><div><div class="eyebrow">Interactive roadmap</div><h2>12 monthly nodes — click to open the brief</h2></div>
+  <p class="desc">Filter by topic, or use the track buttons. Mark months complete inside the drill-down; progress is saved locally when browser storage is available.</p></div>
+  <div class="roadmap-wrap">
+    <aside class="card rail">
+      <h3>Tracks</h3>
+      <button class="track active" data-track="All">All months</button>
+      <button class="track" data-track="Agentic coding">Agentic coding</button>
+      <button class="track" data-track="Agents">General agents</button>
+      <button class="track" data-track="Automation">Automation</button>
+      <button class="track" data-track="DevOps">DevOps / reproducibility</button>
+      <button class="track" data-track="Homelab">Homelab</button>
+      <button class="track" data-track="Local AI">Local AI</button>
+      <button class="track" data-track="Search">Search / RAG</button>
+      <hr style="border:0;border-top:1px solid #293857;margin:16px 0">
+      <div class="small"><b id="progressText">0 / 12 complete</b><div class="progressbar"><i id="progressFill"></i></div>Progress falls back to page-session memory if localStorage is blocked.</div>
+    </aside>
+    <div class="map"><div class="spine"></div><div id="nodes"></div></div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="freshness"><b>Monthly freshness rule:</b> the curriculum is intentionally stable and compounding. At the start of each month, spend at most 20 minutes checking primary sources for one material change in coding-agent workflows, agent safety/durability, local serving, or infrastructure. Replace at most one reading/project only if the new development changes an engineering decision or clearly obsoletes the planned work. This prevents “keeping up with AI” from becoming the project.</div>
+</section>
+
+<section class="footer">
+  Originally prepared 18 Aug 2026; refreshed 5 Nov 2026. Direct links favor primary documentation, technical write-ups and practitioner case studies. Future-month content is a planned curriculum, not a prediction of future product releases; the freshness rule above is the deliberate mechanism for updating it without derailing continuity.
+</section>
+</main>
+
+<div class="overlay" id="overlay"></div>
+<aside class="drawer" id="drawer" aria-label="Monthly roadmap detail">
+  <div class="drawerHead"><div class="title"><small id="drawerMonth"></small><h2 id="drawerTitle"></h2></div><button class="close" id="close">×</button></div>
+  <div class="drawerBody" id="drawerBody"></div>
+</aside>
+
+<script src="data/core.js"></script>
+<script src="data/months-01-03.js"></script>
+<script src="data/months-04-06.js"></script>
+<script src="data/months-07-09.js"></script>
+<script src="data/months-10-12.js"></script>
+<script src="app.js"></script>
+</body></html>
